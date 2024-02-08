@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_e_commerce/view/category/category_product.dart';
 
-import '../../utills/products_utills.dart';
-import '../../utills/routes_utills.dart';
-
 Widget CategoryView({
   required BuildContext context,
   required String category,
