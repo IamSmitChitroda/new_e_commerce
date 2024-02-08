@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         MyRoutes.homePage: (context) => const HomePage(),
         MyRoutes.detailPage: (context) => const DetailPage(),
-        // MyRoutes.homePage: (context) => const (),
+        // MyRoutes.cartPage: (context) => const
       },
     );
   }

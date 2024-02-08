@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:new_e_commerce/utills/products_utills.dart';
+import 'package:new_e_commerce/view/category/category_view.dart';
 
 import '../../utills/routes_utills.dart';
 import 'detail_page.dart';
@@ -63,94 +64,8 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     ...Categorios.map(
-                      (e) => Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            e.replaceFirst(e[0], e[0].toUpperCase()),
-                            style: TextStyle(
-                              fontSize: h * 0.02,
-                            ),
-                          ),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                ...allProducts
-                                    .map((element) => (element['category'] == e)
-                                        ? GestureDetector(
-                                            onTap: () {
-                                              Navigator.of(context).pushNamed(
-                                                MyRoutes.detailPage,
-                                                arguments: element,
-                                              );
-                                            },
-                                            child: Container(
-                                              height: h * 0.3,
-                                              width: w * 0.5,
-                                              margin: const EdgeInsets.all(5),
-                                              decoration: const BoxDecoration(
-                                                color: Colors.white,
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Colors.grey,
-                                                    blurRadius: 5,
-                                                    offset: Offset(3, 3),
-                                                  ),
-                                                ],
-                                              ),
-                                              child: Column(
-                                                children: [
-                                                  Container(
-                                                    height: h * 0.2,
-                                                    decoration: BoxDecoration(
-                                                      color: Colors.red,
-                                                      image: DecorationImage(
-                                                          image: NetworkImage(
-                                                              element[
-                                                                  'thumbnail']),
-                                                          fit: BoxFit.cover),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    height: h * 0.1,
-                                                    width: w * 0.5,
-                                                    color: Colors.grey.shade100,
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          element['title'],
-                                                          maxLines: 1,
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                        ),
-                                                        Text(
-                                                          element[
-                                                              'description'],
-                                                          maxLines: 1,
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                        ),
-                                                        Text(
-                                                            "\$ ${element['price']}"),
-                                                        // RatingBar.builder(itemBuilder: Icon(Icons.start), onRatingUpdate: onRatingUpdate)
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          )
-                                        : Container())
-                                    .toList()
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                      //AllCategories
+                      (e) => CategoryView(context: context, category: e),
                     ).toList(),
                   ],
                 ),
